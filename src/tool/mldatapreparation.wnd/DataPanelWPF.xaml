@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:DataProcessing.Wnd"
              xmlns:forms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
              xmlns:System="clr-namespace:System;assembly=mscorlib"
+             xmlns:integration="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"
              mc:Ignorable="d" 
              d:DesignHeight="289.927" d:DesignWidth="650">
     <Grid>
@@ -15,9 +16,9 @@
             <RowDefinition Height="23"/>
             <RowDefinition Height="83"/>
         </Grid.RowDefinitions>
-        <WindowsFormsHost  x:Name="hostWF" >
+        <integration:WindowsFormsHost  x:Name="hostWF" >
             <forms:ListView x:Name="listView1" View="Details" FullRowSelect="True" HeaderStyle="None" MultiSelect="False" MouseDoubleClick="ListView1_MouseDoubleClick" MouseDown="ListView1_MouseDown" />
-        </WindowsFormsHost>
+        </integration:WindowsFormsHost>
         <CheckBox x:Name="checkRandomizeDataset" Content="Randomize data set then split" HorizontalAlignment="Left" Margin="10,6,0,0" Grid.Row="2" VerticalAlignment="Top" Height="15" Width="177"/>
         <StackPanel Orientation="Horizontal" Margin="10,0,0,0" Grid.Row="3" VerticalAlignment="Top" HorizontalAlignment="Left" Height="73" Width="616"   >
             <GroupBox Header="Validation data set" HorizontalAlignment="Left" Margin="0,5,0,0" >

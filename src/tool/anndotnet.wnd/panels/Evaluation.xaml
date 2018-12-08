@@ -6,6 +6,7 @@
              xmlns:cnv="clr-namespace:anndotnet.wnd.converters"
              xmlns:zed="clr-namespace:ZedGraph;assembly=ZedGraph"
              xmlns:local="clr-namespace:anndotnet.wnd.panels"
+             xmlns:integration="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
         <UserControl.Resources>
@@ -35,17 +36,17 @@
             <TextBlock HorizontalAlignment="Center" Text=" vs " VerticalAlignment="Center"/>
             <TextBlock HorizontalAlignment="Center" Foreground="Blue" Text="Predicted" VerticalAlignment="Center"/>
         </StackPanel>
-        <WindowsFormsHost Grid.Row="2" Grid.Column="1" FontSize="14">
+        <integration:WindowsFormsHost Grid.Row="2" Grid.Column="1" FontSize="14">
             <local:ZedChartExt Font="Segoe UI, 12pt" x:Name="trainingGraph"/>
-        </WindowsFormsHost>
+        </integration:WindowsFormsHost>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="3" >
             <TextBlock HorizontalAlignment="Center"  Foreground="Orange"  Text="Validation" VerticalAlignment="Center"/>
             <TextBlock HorizontalAlignment="Center" Text=" vs " VerticalAlignment="Center"/>
             <TextBlock HorizontalAlignment="Center" Foreground="Blue" Text="Predicted" VerticalAlignment="Center"/>
         </StackPanel>
-        <WindowsFormsHost Grid.Row="2" Grid.Column="3" FontSize="14">
+        <integration:WindowsFormsHost Grid.Row="2" Grid.Column="3" FontSize="14">
             <local:ZedChartExt  Font="Segoe UI, 12pt" x:Name="validationGraph"/>
-        </WindowsFormsHost>
+        </integration:WindowsFormsHost>
         <TextBlock HorizontalAlignment="Center" Grid.Row="4" Grid.Column="1" Text="Training Performance" VerticalAlignment="Top" />
         <!--<ContentControl Grid.Row="5" Grid.Column="1" FontSize="12" x:Name="trainingContent" HorizontalContentAlignment="Stretch"/>-->
         <ScrollViewer Grid.Row="5" Grid.Column="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" DataContext="{Binding ModelEvaluation.TrainPerformance}" >

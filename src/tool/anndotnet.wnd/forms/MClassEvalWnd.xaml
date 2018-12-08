@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:forms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+        xmlns:integration="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
         Title="Multi-class model evaluation" Height="400" Width="700">
     <Grid>
@@ -56,9 +57,9 @@
         <TextBlock x:Name="txPSS" Grid.Row="5" Grid.Column="6" VerticalAlignment="Center" FontWeight="Bold"/>
 
         <!--confusion matrix-->
-        <WindowsFormsHost  x:Name="hostWF" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="7">
+        <integration:WindowsFormsHost  x:Name="hostWF" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="7">
             <forms:ListView x:Name="listView1" Font="Segoe UI" View="Details" FullRowSelect="False" HeaderStyle="None" MultiSelect="False"  />
-        </WindowsFormsHost>
+        </integration:WindowsFormsHost>
 
     </Grid>
 </Window>

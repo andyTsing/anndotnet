@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:zed="clr-namespace:ZedGraph;assembly=ZedGraph"
              xmlns:local="clr-namespace:anndotnet.wnd.panels"
+             xmlns:integration="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
@@ -76,9 +77,9 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <TextBlock HorizontalAlignment="Center" Text="Minibatch Training" VerticalAlignment="Top" />
-                    <WindowsFormsHost Grid.Row="1" Grid.Column="1" FontSize="14">
+                    <integration:WindowsFormsHost Grid.Row="1" Grid.Column="1" FontSize="14">
                         <local:ZedChartExt BorderStyle="None" Font="Segoe UI, 25pt" x:Name="trainingMinibatchGraph"/>
-                    </WindowsFormsHost>
+                    </integration:WindowsFormsHost>
                     <!--<lvc:CartesianChart  Grid.Row="1" FontSize="14" DisableAnimations="true" Hoverable="False" DataTooltip="{x:Null}">
                         <lvc:CartesianChart.AxisY>
                             <lvc:Axis Foreground="Orange" FontSize="12" Title="{Binding LearningParameters.LossFunction}"/>
@@ -112,9 +113,9 @@
                         <TextBlock HorizontalAlignment="Center" Foreground="Orange" Text="Validation" VerticalAlignment="Center"  FontWeight="Bold"/>
                         <TextBlock HorizontalAlignment="Center" Text=" data" VerticalAlignment="Center"/>-->
                     </StackPanel>
-                    <WindowsFormsHost Grid.Row="1" Grid.Column="1" FontSize="14">
+                    <integration:WindowsFormsHost Grid.Row="1" Grid.Column="1" FontSize="14">
                         <local:ZedChartExt BorderStyle="None" Font="Segoe UI, 25pt" x:Name="trainingDatasetsGraph"/>
-                    </WindowsFormsHost>
+                    </integration:WindowsFormsHost>
                     <!--<lvc:CartesianChart Grid.Row="1" FontSize="14" DisableAnimations="true" Hoverable="False" DataTooltip="{x:Null}">
                         <lvc:CartesianChart.AxisY>
                             <lvc:Axis x:Name="leftAxes"  FontSize="12" Title="{Binding LearningParameters.EvaluationFunction}"/>

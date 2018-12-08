@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:anndotnet.wnd"
         xmlns:panels="clr-namespace:anndotnet.wnd.panels"
+        xmlns:integration="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen" 
         Title="Binary model evaluation" Height="650" Width="850">
     <Grid>
@@ -81,8 +82,8 @@
         <TextBlock x:Name="txScore" Grid.Row="5" Grid.Column="10" VerticalAlignment="Center" FontWeight="Bold"/>
         <Label Grid.Row="6" Grid.Column="9" Content="Recall: "/>
         <TextBlock x:Name="txRecall" Grid.Row="6" Grid.Column="10" VerticalAlignment="Center" FontWeight="Bold"/>
-        <WindowsFormsHost Grid.ColumnSpan="11" Grid.Column="1" Grid.Row="1">
+        <integration:WindowsFormsHost Grid.ColumnSpan="11" Grid.Column="1" Grid.Row="1">
             <panels:ZedChartExt x:Name="zedModel"></panels:ZedChartExt>
-        </WindowsFormsHost>
+        </integration:WindowsFormsHost>
     </Grid>
 </Window>
