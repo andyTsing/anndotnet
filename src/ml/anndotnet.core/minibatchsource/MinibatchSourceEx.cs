@@ -77,6 +77,36 @@ namespace ANNdotNET.Core
                 //
                 defaultmb = CNTKLib.CreateCompositeMinibatchSource(mmsConfig);
             }
+            else if (Type == MinibatchType.Speech)
+            {
+                //fd = HTKFeatureDeserializer(StreamDefs(
+                //    amazing_features = StreamDef(shape = feature_dim, context = (context, context), scp = features_file)))
+
+                //ld = HTKMLFDeserializer(label_mapping_file, StreamDefs(
+                //    awesome_labels = StreamDef(shape = num_classes, mlf = labels_file)))
+
+                //# Enabling BPTT with truncated_length > 0
+                //            return MinibatchSource([fd, ld], truncation_length = truncation_length, max_samples = total_number_of_samples)
+
+                var scp_file = "";//glob_0000.scp
+                var labelMappingFile = "";//state.list
+                var mlfFile = "";//glob_0000.mlf
+                //
+                var featVar = inputVar.First();
+                var labelName = streamConfigurations.Last().m_streamName;
+                var labelDimension = streamConfigurations.Last().m_dim;
+                var featureName = streamConfigurations.First().m_streamName;
+                var featDim = streamConfigurations.First().m_dim;
+                var fc = new HTKFeatureConfiguration(featureName, scp_file, featDim,0,0,false);
+                var htkconfig = new HTKFeatureConfigurationVector() { fc };
+
+                var fconfig = CNTKLib.HTKFeatureDeserializer(htkconfig);
+                var lconfig = CNTKLib.HTKMLFDeserializer(featureName,labelMappingFile, labelDimension,new StringVector() { mlfFile });
+                var mmsConfig = new CNTK.MinibatchSourceConfig(new CNTK.DictionaryVector() { fconfig,lconfig });
+
+                //
+                defaultmb = CNTKLib.CreateCompositeMinibatchSource(mmsConfig);
+            }
             else if (Type == MinibatchType.Custom)
                 custommb = new StreamReader(trainFilePath);
             else
@@ -157,7 +187,7 @@ namespace ANNdotNET.Core
         }
         public Dictionary<Variable, Value> GetNextMinibatch(uint minibatchSizeInSamples, ref bool sweepEnd, List<Variable> vars,  DeviceDescriptor device)
         {
-            if (Type == MinibatchType.Default || Type == MinibatchType.Image)
+            if (Type == MinibatchType.Default || Type == MinibatchType.Image || Type == MinibatchType.Speech)
             {
                 var args = defaultmb.GetNextMinibatch(minibatchSizeInSamples, device);
                 sweepEnd = args.Any(x => x.Value.sweepEnd);

@@ -58,6 +58,7 @@ namespace NNetwork.Core.Common
         Default = 0,
         Custom = 1,
         Image = 2,
+        Speech=3,
     }
 
     public enum LearnerType
